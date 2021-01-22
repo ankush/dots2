@@ -1,0 +1,30 @@
+[user]
+	email = ankush@iwebnotes.com
+	name = Ankush Menat
+	signingKey = C05ADF3A7FD1A918
+
+[commit]
+	gpgSign = true
+
+[difftool]
+    tool = vimdiff
+
+[color "status"]
+	added = green bold
+	changed = yellow bold
+	untracked = red bold
+
+[core]
+	editor = nvim
+
+[merge]
+	tool = vimdiff
+
+[commit]
+	verbose = true
+	template = ~/.gitmessage
+
+[init]
+	defaultBranch = master
+[gpg]
+	program = /usr/local/bin/gpg
