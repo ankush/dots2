@@ -1,7 +1,7 @@
 [user]
 	email = ankush@iwebnotes.com
 	name = Ankush Menat
-	signingKey = C05ADF3A7FD1A918
+	signingKey = BBD13AAF
 
 [commit]
 	gpgSign = true

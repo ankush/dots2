@@ -38,7 +38,6 @@ set spelllang=en_gb " enable spell-check
 set splitbelow " Open new window in bottom half
 set splitright " Open new window in right half
 set tabstop=4
-set expandtab
 set listchars=tab:│>-,extends:>,precedes:<,nbsp:⦸
 set softtabstop=0
 set timeoutlen=500 " reduce leader key timeout from 1sec to 0.5
@@ -47,6 +46,7 @@ set wildmenu
 set noshowmode
 set undodir=~/.config/nvim/undo-dir
 set undofile
+set colorcolumn=80
 autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
 " Trim whitespace on save for all files
 autocmd BufWritePre * :%s/\s\+$//e
