@@ -42,9 +42,6 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'vimwiki/vimwiki'
 
-" Haskell
-Plug 'neovimhaskell/haskell-vim'
-
 call plug#end()
 
 " Auto install missing plugins on startup

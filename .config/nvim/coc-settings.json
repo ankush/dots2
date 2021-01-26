@@ -1,0 +1,12 @@
+{
+  "codeLens.enable": true,
+  "diagnostic.errorSign": "💩",
+  "diagnostic.warningSign": "⚠️ ",
+  "diagnostic.infoSign": "💁",
+  "diagnostic.virtualText": true,
+  "suggest.maxCompleteItemCount": 3,
+  "javascript.format.enabled": false,
+  "diagnostic-languageserver.filetypes": {
+    "python": "pylint"
+  }
+}

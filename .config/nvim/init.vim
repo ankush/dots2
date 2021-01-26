@@ -22,7 +22,6 @@ set lazyredraw " Don't redraw when running macros
 set list
 set mouse+=a " Enable mouse support
 set nojoinspaces  " Use one space, not two, after punctuation
-set nomodeline " Disable modlines
 set noswapfile  " Don't use a swapfile for the buffer
 set nowritebackup " required by Coc
 set number " show absolute line number on current line
