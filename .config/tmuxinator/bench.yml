@@ -45,6 +45,6 @@ pre_window: nvm use frappe && source env/bin/activate
 # attach: false
 
 windows:
-  - editor: nvim
-  - log: git status
+  - editor: cd apps/accounting && nvim
+  - console: cd apps/accounting && git status
   - bench: bench start
