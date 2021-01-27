@@ -28,3 +28,5 @@
 	defaultBranch = master
 [gpg]
 	program = /usr/local/bin/gpg
+[pull]
+	ff = only
