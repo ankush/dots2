@@ -113,7 +113,7 @@ let g:which_key_map['c'] = [ ':e $MYVIMRC', 'Edit vimrc' ]
 let g:which_key_map['e'] = [ ':CocCommand explorer'    , 'Coc-explorer' ]
 let g:which_key_map['f'] = [ ':Files'     , 'search files' ]
 let g:which_key_map['h'] = [ '<C-W>s'     , 'split below']
-let g:which_key_map['q'] = [ ':q'         , 'close buffer' ]
+let g:which_key_map['q'] = [ ':bdelete'         , 'close buffer' ]
 let g:which_key_map['v'] = [ '<C-W>v'     , 'split right']
 let g:which_key_map['z'] = [ 'Goyo'       , 'zen mode' ]
 

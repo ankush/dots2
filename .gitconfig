@@ -25,7 +25,7 @@
 	template = ~/.gitmessage
 
 [init]
-	defaultBranch = master
+	defaultBranch = develop
 [gpg]
 	program = /usr/local/bin/gpg
 [pull]

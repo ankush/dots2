@@ -8,6 +8,7 @@
   "python.formatting.provider": "yapf",
   "python.analysis.typeCheckingMode": "off",
   "javascript.format.enabled": false,
+  "diagnostic-languageserver.mergeConfig": true,
   "diagnostic-languageserver.filetypes": {
     "python": "pylint"
   }

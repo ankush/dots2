@@ -78,7 +78,6 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --follow'
 export GPG_TTY=`tty`
 
 # tmux aliases
-alias t=tmux
 alias mux=tmuxinator
 
 ZSH_DISABLE_COMPFIX=true
@@ -97,13 +96,13 @@ export GEM_HOME="$HOME/gems"
 export PATH="$HOME/gems/bin:$PATH"
 
 # python
-# scripts installed via system python viz. frappe-bench
-export PATH="$HOME/Library/Python/3.8/bin:$PATH"
-
-
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
+
+# todo.txt
+source /usr/local/Cellar/todo-txt/2.12.0/etc/bash_completion.d/todo_completion complete -F _todo t
+alias t="todo.sh"
 
 
 

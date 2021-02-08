@@ -46,6 +46,7 @@ set noshowmode
 set undodir=~/.config/nvim/undo-dir
 set undofile
 set colorcolumn=80
+set noexpandtab
 autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
 " Trim whitespace on save for all files
 autocmd BufWritePre * :%s/\s\+$//e
