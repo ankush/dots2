@@ -1,0 +1,17 @@
+# /Users/ankush/.config/tmuxinator/bench.yml
+
+name: bench-v12
+root: ~/benches/v12
+
+# Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
+pre_window: nvm use frappe && source env/bin/activate
+
+windows:
+  - editor: cd apps/erpnext/erpnext && nvim
+  - shell: cd apps/erpnext/erpnext && git status
+  - bench:
+      layout: main-vertical
+      panes:
+        - bench start
+        - bench --site erpnextv12.localhost console
+        - bench --site erpnextv12.localhost mariadb
