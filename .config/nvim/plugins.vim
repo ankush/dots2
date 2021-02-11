@@ -32,6 +32,7 @@ Plug 'norcalli/nvim-colorizer.lua'
 " Git
 Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 
 " Testing
 Plug 'christoomey/vim-tmux-runner'
