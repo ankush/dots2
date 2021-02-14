@@ -54,3 +54,9 @@ local servers = { "pyright", "tsserver", "vimls"}
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup { on_attach = on_attach }
 end
+
+require'nvim-treesitter.configs'.setup {
+  highlight = { enable = true, },
+  incremental_selection = { enable = true, },
+  indent = { enable = true, },
+}
