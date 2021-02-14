@@ -18,8 +18,9 @@ Plug 'tpope/vim-surround'
 " Navigation and search
 Plug 'airblade/vim-rooter'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 " Appearance
 Plug 'dracula/vim', { 'as': 'dracula' }
@@ -83,9 +84,6 @@ let g:signify_sign_show_text = 1
 " rooter settings
 let g:rooter_patterns = ['.git', 'Makefile', 'compile_commands.json', 'package.json']
 
-" fzf settings
-let g:fzf_preview_window = 'right:60%'
-let g:rg_derive_root='true' " move to current root set by rooter
 
 " VimWiki config
 let g:vimwiki_list = [{'path': '~/wiki/',
@@ -181,13 +179,11 @@ nnoremap <leader>v <C-W>v
 nnoremap <leader>q :bdelete<CR>
 
 " Searching
-:nnoremap \ :Rg<CR>
-nnoremap <leader>f :Files<CR>
-nnoremap <leader>s/ :History<CR>
-nnoremap <leader>sb :Buffers<CR>
-nnoremap <leader>sc :Commits<CR>
-nnoremap <leader>sg :GFiles<CR>
-nnoremap <leader>sh :Helptags<CR>
+nnoremap \ <cmd>Telescope live_grep<cr>
+nnoremap <leader>f <cmd>Telescope find_files<cr>
+nnoremap <leader>sg <cmd>Telescope git_files<cr>
+nnoremap <leader>sb <cmd>Telescope buffers<cr>
+nnoremap <leader>sh <cmd>Telescope help_tags<cr>
 
 " Git
 nnoremap <leader>gc :Gcommit<CR>
@@ -242,4 +238,5 @@ inoremap <expr> <c-k> ("\<C-p>")
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-luafile $HOME/.config/nvim/lspconf.lua
+" Initialize lua stuff in lua init file
+luafile $HOME/.config/nvim/luainit.lua

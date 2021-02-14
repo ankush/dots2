@@ -48,15 +48,24 @@ local on_attach = function(client, bufnr)
   end
 end
 
--- Use a loop to conveniently both setup defined servers
--- and map buffer local keybindings when the language server attaches
-local servers = { "pyright", "tsserver", "vimls"}
-for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup { on_attach = on_attach }
-end
+nvim_lsp.pyright.setup {
+	on_attach = on_attach,
+	settings = {
+	python = {
+		analysis = {
+			autoSearchPaths = true,
+			useLibraryCodeForTypes = false,
+			typeCheckingMode = "off"
+		}
+	}
+	}
+
+}
+nvim_lsp.tsserver.setup { on_attach = on_attach }
+nvim_lsp.vimls.setup { on_attach = on_attach }
 
 require'nvim-treesitter.configs'.setup {
   highlight = { enable = true, },
   incremental_selection = { enable = true, },
-  indent = { enable = true, },
 }
+
