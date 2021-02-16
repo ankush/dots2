@@ -39,6 +39,7 @@ Plug 'tpope/vim-rhubarb'
 
 " Plain text
 Plug 'vimwiki/vimwiki'
+Plug 'freitass/todo.txt-vim'
 
 call plug#end()
 
@@ -84,7 +85,6 @@ let g:signify_sign_show_text = 1
 " rooter settings
 let g:rooter_patterns = ['.git', 'Makefile', 'compile_commands.json', 'package.json']
 
-
 " VimWiki config
 let g:vimwiki_list = [{'path': '~/wiki/',
                       \ 'syntax': 'markdown', 'ext': '.md'}]
@@ -97,13 +97,15 @@ let g:calendar_options = 'nornu'        " Draw calendar with proper width in spl
 let g:calendar_monday=1                 " Start week on monday
 let g:calendar_diary=$HOME.'wiki/diary' " Specify location for diary file
 
+" completion.nvim config
+let g:completion_sorting = "none"
+let g:completion_matching_strategy_list = ['exact', 'substring']
+let g:completion_matching_smart_case = 1
+let g:completion_trigger_keyword_length = 2
+let g:completion_timer_cycle = 150
 
 " Copy diary template when starting a new file in diary directory
 autocmd BufNewFile */wiki/diary/[0-9]*.md :read ~/wiki/diary/templates/template.md
-
-
-" Vim-test config
-let test#strategy = "vtr"
 
 colorscheme dracula
 set cursorline " highlight current line
@@ -127,6 +129,7 @@ set mouse+=a " Enable mouse support
 set nojoinspaces  " Use one space, not two, after punctuation
 set noswapfile  " Don't use a swapfile for the buffer
 set nowritebackup " required by Coc
+set nowrap " disable text wrapping
 set number " show absolute line number on current line
 set scrolloff=5 " Show at least 5 extra lines while scrolling
 set shiftwidth=4
@@ -139,9 +142,7 @@ set spellfile=$HOME/.config/nvim/spell/en.utf-8.add
 set spelllang=en_gb " enable spell-check
 set splitbelow " Open new window in bottom half
 set splitright " Open new window in right half
-set tabstop=4
-set listchars=tab:│>-,extends:>,precedes:<,nbsp:⦸
-set softtabstop=0
+set listchars=tab:│--,extends:>,precedes:<,nbsp:⦸
 set timeoutlen=500 " reduce leader key timeout from 1sec to 0.5
 set updatetime=150
 set wildmenu
@@ -163,9 +164,9 @@ autocmd BufReadPost *
     \   exe "normal g`\"" |
     \ endif
 
-" VIM key bindings
 
 let g:mapleader = "\<Space>"
+let g:maplocalleader = "\<Space>"
 " Disable useless binding
 nmap Q <Nop>
 
@@ -211,6 +212,8 @@ vmap <Right> >gv
 
 :map <F6> :setlocal spell! spelllang=en_gb<CR>
 nnoremap <CR><CR> :noh<CR><CR>
+
+nnoremap <leader>t :vs ~/Google Drive/TODO/todo.txt<CR>
 
 nmap <Leader>1 <Plug>lightline#bufferline#go(1)
 nmap <Leader>2 <Plug>lightline#bufferline#go(2)
