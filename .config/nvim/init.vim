@@ -129,7 +129,7 @@ set mouse+=a " Enable mouse support
 set nojoinspaces  " Use one space, not two, after punctuation
 set noswapfile  " Don't use a swapfile for the buffer
 set nowritebackup " required by Coc
-set nowrap " disable text wrapping
+set wrap " disable text wrapping
 set number " show absolute line number on current line
 set scrolloff=5 " Show at least 5 extra lines while scrolling
 set shiftwidth=4

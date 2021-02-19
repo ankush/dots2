@@ -49,16 +49,16 @@ local on_attach = function(client, bufnr)
 end
 
 nvim_lsp.pyright.setup {
-	on_attach = on_attach,
-	settings = {
-	python = {
-		analysis = {
-			autoSearchPaths = true,
-			useLibraryCodeForTypes = false,
-			typeCheckingMode = "off"
-		}
-	}
-	}
+  on_attach = on_attach,
+  settings = {
+    python = {
+      analysis = {
+        autoSearchPaths = true,
+        useLibraryCodeForTypes = false,
+        typeCheckingMode = "off"
+      }
+    }
+  }
 }
 nvim_lsp.tsserver.setup { on_attach = on_attach }
 nvim_lsp.vimls.setup { on_attach = on_attach }
@@ -67,4 +67,3 @@ require'nvim-treesitter.configs'.setup {
   highlight = { enable = true, },
   incremental_selection = { enable = true, },
 }
-
