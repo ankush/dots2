@@ -1,5 +1,5 @@
-name: bench-v12
-root: ~/benches/v12
+name: bench-develop
+root: ~/benches/develop
 
 pre_window: nvm use frappe && source env/bin/activate
 

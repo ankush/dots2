@@ -1,0 +1,7 @@
+name: presentations
+root: ~/proj/presentations
+
+windows:
+  - editor: nvim
+  - console: git log
+  - server: make dev
