@@ -18,7 +18,10 @@
 	editor = nvim
 
 [merge]
-	tool = vimdiff
+	tool = nvim
+
+[mergetool "nvim"]
+	cmd = nvim -f -c \"Gdiffsplit!\" \"$MERGED\"
 
 [commit]
 	verbose = true
@@ -30,3 +33,9 @@
 	program = /usr/local/bin/gpg
 [pull]
 	ff = only
+
+[alias]
+	lg = log --color --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --branches
+[push]
+	# YOLO
+	default = current

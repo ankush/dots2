@@ -1,5 +1,6 @@
 local nvim_lsp = require('lspconfig')
 local nvim_completion = require('completion')
+local telescope = require('telescope')
 
 local on_attach = function(client, bufnr)
   nvim_completion.on_attach(client, bufnr)
@@ -67,3 +68,21 @@ require'nvim-treesitter.configs'.setup {
   highlight = { enable = true, },
   incremental_selection = { enable = true, },
 }
+
+telescope.setup {
+    defaults = {
+        file_sorter = require('telescope.sorters').get_fzy_sorter,
+        prompt_prefix = ' >',
+
+        file_previewer   = require('telescope.previewers').vim_buffer_cat.new,
+        grep_previewer   = require('telescope.previewers').vim_buffer_vimgrep.new,
+    },
+    extensions = {
+        fzy_native = {
+            override_generic_sorter = true,
+            override_file_sorter = true,
+        }
+    }
+}
+
+telescope.load_extension('fzy_native')

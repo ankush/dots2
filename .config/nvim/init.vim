@@ -21,6 +21,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
 " Appearance
 Plug 'dracula/vim', { 'as': 'dracula' }
@@ -31,6 +32,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " HTML/CSS/JS
 Plug 'mattn/emmet-vim'
 Plug 'norcalli/nvim-colorizer.lua'
+Plug 'prettier/vim-prettier'
 
 " Git
 Plug 'mhinz/vim-signify'
@@ -142,14 +144,14 @@ set spellfile=$HOME/.config/nvim/spell/en.utf-8.add
 set spelllang=en_gb " enable spell-check
 set splitbelow " Open new window in bottom half
 set splitright " Open new window in right half
-set listchars=tab:│--,extends:>,precedes:<,nbsp:⦸
+set listchars=tab:│∙,extends:>,precedes:<,nbsp:⦸
 set timeoutlen=500 " reduce leader key timeout from 1sec to 0.5
 set updatetime=150
 set wildmenu
 set noshowmode
 set undodir=~/.config/nvim/undo-dir
 set undofile
-set colorcolumn=80
+set colorcolumn=92
 set noexpandtab
 set signcolumn=number
 autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
@@ -220,12 +222,20 @@ nmap <Leader>2 <Plug>lightline#bufferline#go(2)
 nmap <Leader>3 <Plug>lightline#bufferline#go(3)
 nmap <Leader>4 <Plug>lightline#bufferline#go(4)
 nmap <Leader>5 <Plug>lightline#bufferline#go(5)
+nmap <Leader>6 <Plug>lightline#bufferline#go(6)
+nmap <Leader>7 <Plug>lightline#bufferline#go(7)
+nmap <Leader>8 <Plug>lightline#bufferline#go(8)
+nmap <Leader>9 <Plug>lightline#bufferline#go(9)
 
 nmap <Leader>c1 <Plug>lightline#bufferline#delete(1)
 nmap <Leader>c2 <Plug>lightline#bufferline#delete(2)
 nmap <Leader>c3 <Plug>lightline#bufferline#delete(3)
 nmap <Leader>c4 <Plug>lightline#bufferline#delete(4)
 nmap <Leader>c5 <Plug>lightline#bufferline#delete(5)
+nmap <Leader>c6 <Plug>lightline#bufferline#delete(6)
+nmap <Leader>c7 <Plug>lightline#bufferline#delete(7)
+nmap <Leader>c8 <Plug>lightline#bufferline#delete(8)
+nmap <Leader>c9 <Plug>lightline#bufferline#delete(9)
 
 " Replace word with yanked word
 nmap <C-p> ciw<C-r>0<ESC>

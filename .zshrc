@@ -24,6 +24,8 @@ export PATH=$HOME/bin:$PATH
 # Disable auto-setting terminal title.
 DISABLE_AUTO_TITLE="true"
 
+# increase history
+SAVEHIST=1048576
 # the one true text editor
 alias v="nvim"
 alias vi="nvim"
