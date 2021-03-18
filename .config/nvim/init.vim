@@ -6,6 +6,7 @@ call plug#begin($HOME . '/.local/share/nvim/plugged')
 " Intelligence
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
+Plug 'hrsh7th/nvim-compe'
 
 " General
 Plug 'editorconfig/editorconfig-vim'
@@ -18,11 +19,8 @@ Plug 'tpope/vim-surround'
 " Navigation and search
 Plug 'airblade/vim-rooter'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-telescope/telescope-fzy-native.nvim'
-
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 " Appearance
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'itchyny/lightline.vim'
@@ -106,6 +104,11 @@ let g:completion_matching_smart_case = 1
 let g:completion_trigger_keyword_length = 2
 let g:completion_timer_cycle = 150
 
+" fzf settings
+let g:fzf_preview_window = ['up:70%', 'ctrl-/']
+let g:fzf_layout = { 'window': { 'width': 0.95, 'height': 0.95 } }
+
+
 " Copy diary template when starting a new file in diary directory
 autocmd BufNewFile */wiki/diary/[0-9]*.md :read ~/wiki/diary/templates/template.md
 
@@ -154,6 +157,9 @@ set undofile
 set colorcolumn=92
 set noexpandtab
 set signcolumn=number
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+set foldlevel=99
 autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
 " Trim whitespace on save for all files
 autocmd BufWritePre * :%s/\s\+$//e
@@ -182,11 +188,11 @@ nnoremap <leader>v <C-W>v
 nnoremap <leader>q :bdelete<CR>
 
 " Searching
-nnoremap \ <cmd>Telescope live_grep<cr>
-nnoremap <leader>f <cmd>Telescope find_files<cr>
-nnoremap <leader>sg <cmd>Telescope git_files<cr>
-nnoremap <leader>sb <cmd>Telescope buffers<cr>
-nnoremap <leader>sh <cmd>Telescope help_tags<cr>
+nnoremap \ :Rg<cr>
+nnoremap <leader>f :Files<cr>
+nnoremap <leader>sg :GFiles<cr>
+nnoremap <leader>sc :Commits<cr>
+nnoremap <leader>sm :GFiles?<cr>
 
 " Git
 nnoremap <leader>gc :Gcommit<CR>

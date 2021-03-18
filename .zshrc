@@ -64,6 +64,9 @@ alias rm="rm -i"
 alias mv="mv -i"
 alias cp="cp -i"
 
+# exa
+alias ls=exa
+
 
 # Dotfile  manager
 alias dot='/usr/local/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'

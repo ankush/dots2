@@ -1,6 +1,33 @@
 local nvim_lsp = require('lspconfig')
 local nvim_completion = require('completion')
-local telescope = require('telescope')
+local compe = require('compe')
+
+vim.o.completeopt = "menuone,noselect"
+
+require'compe'.setup {
+  enabled = true;
+  autocomplete = true;
+  debug = false;
+  min_length = 1;
+  preselect = 'enable';
+  throttle_time = 80;
+  source_timeout = 200;
+  incomplete_delay = 400;
+  max_abbr_width = 100;
+  max_kind_width = 100;
+  max_menu_width = 100;
+  documentation = true;
+
+  source = {
+    path = true;
+    buffer = true;
+    nvim_lsp = true;
+    nvim_lua = true;
+    spell = true;
+    treesitter = true;
+  };
+}
+
 
 local on_attach = function(client, bufnr)
   nvim_completion.on_attach(client, bufnr)
@@ -68,21 +95,3 @@ require'nvim-treesitter.configs'.setup {
   highlight = { enable = true, },
   incremental_selection = { enable = true, },
 }
-
-telescope.setup {
-    defaults = {
-        file_sorter = require('telescope.sorters').get_fzy_sorter,
-        prompt_prefix = ' >',
-
-        file_previewer   = require('telescope.previewers').vim_buffer_cat.new,
-        grep_previewer   = require('telescope.previewers').vim_buffer_vimgrep.new,
-    },
-    extensions = {
-        fzy_native = {
-            override_generic_sorter = true,
-            override_file_sorter = true,
-        }
-    }
-}
-
-telescope.load_extension('fzy_native')
