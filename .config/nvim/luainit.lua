@@ -82,7 +82,7 @@ nvim_lsp.pyright.setup {
     python = {
       analysis = {
         autoSearchPaths = true,
-        useLibraryCodeForTypes = false,
+        useLibraryCodeForTypes = true,
         typeCheckingMode = "off"
       }
     }
@@ -90,8 +90,17 @@ nvim_lsp.pyright.setup {
 }
 nvim_lsp.tsserver.setup { on_attach = on_attach }
 nvim_lsp.vimls.setup { on_attach = on_attach }
+nvim_lsp.gopls.setup { on_attach = on_attach }
 
 require'nvim-treesitter.configs'.setup {
   highlight = { enable = true, },
-  incremental_selection = { enable = true, },
+  incremental_selection = {
+      enable = true,
+      keymaps = {
+        init_selection = "gnn",
+        node_incremental = "grn",
+        scope_incremental = "grc",
+        node_decremental = "grm",
+    },
+  },
 }

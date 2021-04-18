@@ -4,5 +4,5 @@ root: ~/benches/develop
 pre_window: nvm use frappe && source env/bin/activate
 
 windows:
-  - editor: git -C apps/erpnext status && git -C apps/frappe status
+  - editor: git -C apps/erpnext status && git -C apps/frappe status && open http://erp.localhost:8000/login
   - bench: bench start

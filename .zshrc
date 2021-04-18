@@ -105,6 +105,9 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 
+# golang
+export PATH="$HOME/go/bin:$PATH"
+
 # todo.txt
 source /usr/local/Cellar/todo-txt/2.12.0/etc/bash_completion.d/todo_completion complete -F _todo t
 alias t="todo.sh"

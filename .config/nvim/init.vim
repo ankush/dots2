@@ -21,6 +21,7 @@ Plug 'airblade/vim-rooter'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
+
 " Appearance
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'itchyny/lightline.vim'
@@ -105,7 +106,7 @@ let g:completion_trigger_keyword_length = 2
 let g:completion_timer_cycle = 150
 
 " fzf settings
-let g:fzf_preview_window = ['up:70%', 'ctrl-/']
+let g:fzf_preview_window = ['down:70%', 'ctrl-/']
 let g:fzf_layout = { 'window': { 'width': 0.95, 'height': 0.95 } }
 
 
@@ -147,7 +148,7 @@ set spellfile=$HOME/.config/nvim/spell/en.utf-8.add
 set spelllang=en_gb " enable spell-check
 set splitbelow " Open new window in bottom half
 set splitright " Open new window in right half
-set listchars=tab:│∙,extends:>,precedes:<,nbsp:⦸
+set listchars=tab:│\ ,extends:>,trail:·,precedes:<,nbsp:⦸
 set timeoutlen=500 " reduce leader key timeout from 1sec to 0.5
 set updatetime=150
 set wildmenu
@@ -193,13 +194,14 @@ nnoremap <leader>f :Files<cr>
 nnoremap <leader>sg :GFiles<cr>
 nnoremap <leader>sc :Commits<cr>
 nnoremap <leader>sm :GFiles?<cr>
+nnoremap <leader>m :History<CR>
 
 " Git
 nnoremap <leader>gc :Gcommit<CR>
 nnoremap <leader>gd :Gdiffsplit<CR>
 nnoremap <leader>gl :Glog<CR>
 nnoremap <leader>gs :G<CR>
-nnoremap <leader>gb :Gblame<CR>
+nnoremap <leader>gb :Git blame<CR>
 nnoremap <leader>gg :GBrowse<CR>
 
 " Make

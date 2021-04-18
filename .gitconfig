@@ -41,9 +41,7 @@
 
 [alias]
 	lg = log --color --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --branches
-[push]
-	# YOLO
-	default = current
+
 [filter "lfs"]
 	required = true
 	clean = git-lfs clean -- %f
