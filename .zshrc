@@ -108,6 +108,13 @@ fi
 # golang
 export PATH="$HOME/go/bin:$PATH"
 
+# rust
+export PATH="$HOME/.cargo/bin:$PATH"
+
+
+# rq issues
+export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+
 # todo.txt
 source /usr/local/Cellar/todo-txt/2.12.0/etc/bash_completion.d/todo_completion complete -F _todo t
 alias t="todo.sh"

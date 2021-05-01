@@ -19,6 +19,7 @@ Plug 'tpope/vim-surround'
 " Navigation and search
 Plug 'airblade/vim-rooter'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'christoomey/vim-tmux-runner'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 
@@ -27,6 +28,7 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/playground'
 
 " HTML/CSS/JS
 Plug 'mattn/emmet-vim'
@@ -41,6 +43,10 @@ Plug 'tpope/vim-rhubarb'
 " Plain text
 Plug 'vimwiki/vimwiki'
 Plug 'freitass/todo.txt-vim'
+
+" Testing
+Plug 'vim-test/vim-test'
+Plug 'ankush/frappe_test.vim'
 
 call plug#end()
 
@@ -176,6 +182,12 @@ autocmd BufReadPost *
 
 let g:mapleader = "\<Space>"
 let g:maplocalleader = "\<Space>"
+
+let test#strategy = "vtr"
+
+let test#custom_runners = {'python': ['Frappe']}
+let test#enabled_runners = ["python#frappe"]
+
 " Disable useless binding
 nmap Q <Nop>
 
@@ -209,8 +221,15 @@ nnoremap <leader>mm :!make<CR>
 nnoremap <leader>mc :make clean<CR>
 nnoremap <leader>mr :make run<CR>
 
+" Testing
+nnoremap <leader>tf :TestFile<CR>
+nnoremap <leader>tn :TestNearest<CR>
+
 " Save like normal human beings
 nnoremap <C-s> :w<CR>
+
+" black formatting
+nnoremap <leader>b :!black %<CR>
 
 " Move in long wrapped lines
 nmap <Down> gj

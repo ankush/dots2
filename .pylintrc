@@ -13,7 +13,7 @@ ignore=CVS
 
 # Add files or directories matching the regex patterns to the blacklist. The
 # regex matches against base names, not paths.
-ignore-patterns=
+ignore-patterns=test_.*\.py
 
 # Python code to execute, usually for sys.path manipulation such as
 # pygtk.require().
@@ -21,7 +21,7 @@ ignore-patterns=
 
 # Use multiple processes to speed up Pylint. Specifying 0 will auto-detect the
 # number of processors available to use.
-jobs=1
+jobs=0
 
 # Control the amount of potential inferred values when inferring a single
 # object. This can help the performance when dealing with large functions or
@@ -61,91 +61,18 @@ confidence=
 # you want to run only the similarities checker, you can use "--disable=all
 # --enable=similarities". If you want to run only the classes checker, but have
 # no Warning level messages displayed, use "--disable=all --enable=classes
-# --disable=W".
-disable=apply-builtin,
-        backtick,
-        bad-inline-option,
-        bad-python3-import,
-        basestring-builtin,
-        buffer-builtin,
-        cmp-builtin,
-        cmp-method,
-        coerce-builtin,
-        coerce-method,
-        comprehension-escape
-        delslice-method,
-        deprecated-itertools-function,
-        deprecated-operator-function,
-        deprecated-pragma,
-        deprecated-str-translate-call,
-        deprecated-string-function,
-        deprecated-sys-function,
-        deprecated-types-field,
-        deprecated-urllib-function,
-        dict-items-not-iterating,
-        dict-iter-method,
-        dict-keys-not-iterating,
-        dict-values-not-iterating,
-        dict-view-method,
-        div-method,
-        eq-without-hash,
-        exception-escape,
-        exception-message-attribute,
-        execfile-builtin,
-        file-builtin,
-        file-ignored,
-        filter-builtin-not-iterating,
-        getslice-method,
-        hex-method,
-        idiv-method,
-        import-star-module-level,
-        indexing-exception,
-        input-builtin,
-        intern-builtin,
-        invalid-str-codec,
-        locally-disabled,
-        long-builtin,
-        long-suffix,
-        map-builtin-not-iterating,
-        metaclass-assignment,
-        next-method-called,
-        next-method-defined,
-        no-absolute-import,
-        non-ascii-bytes-literal,
-        nonzero-method,
-        oct-method,
-        old-division,
-        old-ne-operator,
-        old-octal-literal,
-        old-raise-syntax,
-        parameter-unpacking,
-        print-statement,
-        raising-string,
-        range-builtin-not-iterating,
-        raw-checker-failed,
-        raw_input-builtin,
-        rdiv-method,
-        reduce-builtin,
-        reload-builtin,
-        round-builtin,
-        setslice-method,
-        standarderror-builtin,
-        suppressed-message,
-        sys-max-int,
-        unichr-builtin,
-        unicode-builtin,
-        unpacking-in-except,
-        use-symbolic-message-instead,
-        useless-suppression,
-        using-cmp-argument,
-        xrange-builtin,
-        xreadlines-attribute,
-        zip-builtin-not-iterating,
-        mixed-indentation,
-        missing-function-docstring,
-        missing-module-docstring,
-        missing-class-docstring,
-        no-member
+disable=C,   # disbble all convention checks
+        R,   # disable all refactoring checks
+        no-member,  # not possible to use with Frappe
+        attribute-defined-outside-init,  #not possible with Frappe
+        unused-argument,
+        bad-indentation,     # sider takes care of this, mostly false positives / style
+        broad-except,
+        bare-except,
+        access-member-before-definition, # more false positives with FF
+        unused-import,   # import frappe
+        unused-wildcard-import,  # from utils import *
+        unused-variable
 
 # Enable the message, report, category or checker with the given id(s). You can
 # either give multiple identifier separated by comma (,) or put this option
@@ -170,60 +97,16 @@ evaluation=10.0 - ((float(5 * error + warning + refactor + convention) / stateme
 # Set the output format. Available formats are text, parseable, colorized, json
 # and msvs (visual studio). You can also give a reporter class, e.g.
 # mypackage.mymodule.MyReporterClass.
-output-format=text
+output-format=colorized
 
 # Tells whether to display a full report or only the messages.
-reports=no
+reports=yes
 
 # Activate the evaluation score.
-score=yes
-
-
-[REFACTORING]
-
-# Maximum number of nested blocks for function / method body
-max-nested-blocks=5
-
-# Complete name of functions that never returns. When checking for
-# inconsistent-return-statements if a never returning function is called then
-# it will be considered as an explicit return statement and no message will be
-# printed.
-never-returning-functions=sys.exit
-
-
-[LOGGING]
-
-# Format style used to check logging format string. `old` means using %
-# formatting, `new` is for `{}` formatting,and `fstr` is for f-strings.
-logging-format-style=old
-
-# Logging modules to check that the string format arguments are in logging
-# function parameter format.
-logging-modules=logging
-
-
-[SPELLING]
-
-# Limits count of emitted suggestions for spelling mistakes.
-max-spelling-suggestions=4
-
-# Spelling dictionary name. Available dictionaries: none. To make it work,
-# install the python-enchant package.
-spelling-dict=
-
-# List of comma separated words that should not be checked.
-spelling-ignore-words=
-
-# A path to a file that contains the private dictionary; one word per line.
-spelling-private-dict-file=
-
-# Tells whether to store unknown words to the private dictionary (see the
-# --spelling-private-dict-file option) instead of raising a message.
-spelling-store-unknown-words=no
+score=no
 
 
 [MISCELLANEOUS]
-
 # List of note tags to take in consideration, separated by a comma.
 notes=FIXME,
       XXX,
@@ -539,7 +422,8 @@ exclude-protected=_asdict,
                   _fields,
                   _replace,
                   _source,
-                  _make
+                  _make,
+                  _dict
 
 # List of valid names for the first argument in a class method.
 valid-classmethod-first-arg=cls
