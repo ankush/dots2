@@ -79,6 +79,12 @@ alias :q="exit" # hehe
 
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow'
 
+# send ripgrep output to vim quickfix list
+function vrg()
+{
+    nvim -q <(rg --vimgrep "$@")
+}
+
 # gpg singing config
 export GPG_TTY=`tty`
 

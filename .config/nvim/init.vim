@@ -225,6 +225,11 @@ nnoremap <leader>mr :make run<CR>
 nnoremap <leader>tf :TestFile<CR>
 nnoremap <leader>tn :TestNearest<CR>
 
+" Quickfix list
+nnoremap <leader>ll :copen<CR>
+nnoremap <leader>ln :cnext<CR>
+nnoremap <leader>lp :cprev<CR>
+
 " Save like normal human beings
 nnoremap <C-s> :w<CR>
 
