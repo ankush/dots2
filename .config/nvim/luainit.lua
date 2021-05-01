@@ -1,6 +1,6 @@
-local nvim_lsp = require('lspconfig')
-local nvim_completion = require('completion')
-local compe = require('compe')
+local nvim_lsp = require'lspconfig'
+local nvim_completion = require'completion'
+local compe = require'compe'
 
 vim.o.completeopt = "menuone,noselect"
 
@@ -111,5 +111,30 @@ require'nvim-treesitter.configs'.setup {
       goto_node = '<cr>',
       show_help = '?',
     },
+  }
+}
+
+require'lualine'.setup{
+  options = {
+    theme = 'dracula',
+    section_separators = "",
+    component_separators = "",
+  },
+  sections = {
+    lualine_a = { {'mode', upper = true} },
+    lualine_b = { {'branch'} },
+    lualine_c = { {'filename', file_status = true}, {'diagnostics', sources={"nvim_lsp"}}},
+    lualine_x = { 'diff', 'fileformat', 'filetype' },
+    lualine_y = { 'progress' },
+    lualine_z = { 'location' },
+  },
+  extensions = { 'fzf' }
+}
+
+require'bufferline'.setup{
+  options={
+    diagnostics = "nvim_lsp",
+    show_close_icon = false,
+    always_show_bufferline = false,
   }
 }
