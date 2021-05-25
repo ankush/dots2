@@ -28,8 +28,10 @@ DISABLE_AUTO_TITLE="true"
 SAVEHIST=1048576
 # the one true text editor
 alias v="nvim"
+alias nv="poetry run nvim"
 alias vi="nvim"
 alias vim="nvim"
+alias la="ls -lah"
 export EDITOR="nvim"
 export VISUAL="nvim"
 export MANPAGER="nvim +Man!"
@@ -85,6 +87,11 @@ function vrg()
     nvim -q <(rg --vimgrep "$@")
 }
 
+function vsemgrep()
+{
+    nvim -q <(semgrep "$@" --vim)
+}
+
 # gpg singing config
 export GPG_TTY=`tty`
 
@@ -110,6 +117,7 @@ export PATH="$HOME/gems/bin:$PATH"
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
+export PYTHONDONTWRITEBYTECODE="true"
 
 # golang
 export PATH="$HOME/go/bin:$PATH"
@@ -127,3 +135,10 @@ alias t="todo.sh"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+alias luamake=/Users/ankush/proj/lua-language-server/3rd/luamake/luamake
+
+
+source ~/.localenvs
+
+export PATH="$HOME/.poetry/bin:$PATH"
