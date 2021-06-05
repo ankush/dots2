@@ -117,7 +117,6 @@ export PATH="$HOME/gems/bin:$PATH"
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
-export PYTHONDONTWRITEBYTECODE="true"
 
 # golang
 export PATH="$HOME/go/bin:$PATH"

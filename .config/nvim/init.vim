@@ -10,9 +10,7 @@ Plug 'hrsh7th/nvim-compe'
 
 " General
 Plug 'editorconfig/editorconfig-vim'
-Plug 'mattn/calendar-vim'
 Plug 'mhinz/vim-startify'
-Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 
@@ -26,12 +24,10 @@ Plug 'junegunn/fzf.vim'
 " Appearance
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'nvim-treesitter/playground'
 Plug 'hoob3rt/lualine.nvim'
 Plug 'akinsho/nvim-bufferline.lua'
 
 " HTML/CSS/JS
-Plug 'mattn/emmet-vim'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'prettier/vim-prettier'
 
@@ -42,7 +38,6 @@ Plug 'tpope/vim-rhubarb'
 
 " Plain text
 Plug 'vimwiki/vimwiki'
-Plug 'freitass/todo.txt-vim'
 
 " Testing
 Plug 'vim-test/vim-test'
@@ -68,7 +63,7 @@ let g:signify_sign_show_count = 0
 let g:signify_sign_show_text = 1
 
 " rooter settings
-let g:rooter_patterns = ['.git', 'Makefile', 'compile_commands.json', 'package.json']
+let g:rooter_patterns = ['.git', 'Makefile', 'compile_commands.json', 'package.json', 'Cargo.toml']
 
 " VimWiki config
 let g:vimwiki_list = [{'path': '~/wiki/',
@@ -165,6 +160,7 @@ let test#strategy = "vtr"
 
 let test#custom_runners = {'python': ['Frappe']}
 let test#enabled_runners = ["python#frappe"]
+let g:test#python#frappe#testsite = "tests"
 
 " Disable useless binding
 nmap Q <Nop>
