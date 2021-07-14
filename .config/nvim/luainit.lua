@@ -2,14 +2,12 @@ local nvim_lsp = require'lspconfig'
 local nvim_completion = require'completion'
 local compe = require'compe'
 
-vim.o.completeopt = "menuone,noselect"
-
 compe.setup {
   enabled = true;
   autocomplete = true;
   debug = false;
   min_length = 1;
-  preselect = 'enable';
+  preselect = 'disable';
   throttle_time = 80;
   source_timeout = 200;
   incomplete_delay = 400;
@@ -22,9 +20,9 @@ compe.setup {
     path = true;
     buffer = true;
     nvim_lsp = true;
-    nvim_lua = true;
-    spell = true;
-    treesitter = true;
+    nvim_lua = false;
+    spell = false;
+    treesitter = false;
   };
 }
 
@@ -60,20 +58,6 @@ local on_attach = function(client, bufnr)
   elseif client.resolved_capabilities.document_range_formatting then
     buf_set_keymap("n", "<space>lf", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
   end
-
-  -- Set autocommands conditional on server_capabilities
-  if client.resolved_capabilities.document_highlight then
-    vim.api.nvim_exec([[
-      hi LspReferenceRead cterm=bold ctermbg=red guibg=#44475a
-      hi LspReferenceText cterm=bold ctermbg=red guibg=#44475a
-      hi LspReferenceWrite cterm=bold ctermbg=red guibg=#44475a
-      augroup lsp_document_highlight
-        autocmd! * <buffer>
-        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-      augroup END
-    ]], false)
-  end
 end
 
 nvim_lsp.pyright.setup {
@@ -83,14 +67,16 @@ nvim_lsp.pyright.setup {
       analysis = {
         autoSearchPaths = true,
         useLibraryCodeForTypes = true,
-        typeCheckingMode = "off"
+        typeCheckingMode = "off",
       }
     }
   }
 }
+
+
 nvim_lsp.tsserver.setup { on_attach = on_attach }
 nvim_lsp.vimls.setup { on_attach = on_attach }
-nvim_lsp.gopls.setup { on_attach = on_attach }
+
 
 require'nvim-treesitter.configs'.setup {
   highlight = { enable = true, },
@@ -137,4 +123,50 @@ require'bufferline'.setup{
     show_close_icon = false,
     always_show_bufferline = false,
   }
+}
+
+require('gitsigns').setup {
+  signs = {
+    add          = {hl = 'GitSignsAdd'   , text = '│', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},
+    change       = {hl = 'GitSignsChange', text = '│', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
+    delete       = {hl = 'GitSignsDelete', text = '_', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
+    topdelete    = {hl = 'GitSignsDelete', text = '‾', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
+    changedelete = {hl = 'GitSignsChange', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
+  },
+  numhl = false,
+  linehl = false,
+  keymaps = {
+    -- Default keymap options
+    noremap = true,
+    buffer = true,
+
+    ['n ]c'] = { expr = true, "&diff ? ']c' : '<cmd>lua require\"gitsigns.actions\".next_hunk()<CR>'"},
+    ['n [c'] = { expr = true, "&diff ? '[c' : '<cmd>lua require\"gitsigns.actions\".prev_hunk()<CR>'"},
+
+    ['n <leader>hs'] = '<cmd>lua require"gitsigns".stage_hunk()<CR>',
+    ['v <leader>hs'] = '<cmd>lua require"gitsigns".stage_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>',
+    ['n <leader>hu'] = '<cmd>lua require"gitsigns".undo_stage_hunk()<CR>',
+    ['n <leader>hr'] = '<cmd>lua require"gitsigns".reset_hunk()<CR>',
+    ['v <leader>hr'] = '<cmd>lua require"gitsigns".reset_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>',
+    ['n <leader>hR'] = '<cmd>lua require"gitsigns".reset_buffer()<CR>',
+    ['n <leader>hp'] = '<cmd>lua require"gitsigns".preview_hunk()<CR>',
+    ['n <leader>hb'] = '<cmd>lua require"gitsigns".blame_line(true)<CR>',
+
+    -- Text objects
+    ['o ih'] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>',
+    ['x ih'] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>'
+  },
+  watch_index = {
+    interval = 1000,
+    follow_files = true
+  },
+  current_line_blame = false,
+  current_line_blame_delay = 1000,
+  current_line_blame_position = 'eol',
+  sign_priority = 6,
+  update_debounce = 100,
+  status_formatter = nil, -- Use default
+  word_diff = false,
+  use_decoration_api = true,
+  use_internal_diff = true,  -- If luajit is present
 }

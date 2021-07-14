@@ -13,6 +13,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
+Plug 'nvim-lua/plenary.nvim'
 
 " Navigation and search
 Plug 'airblade/vim-rooter'
@@ -24,24 +25,28 @@ Plug 'junegunn/fzf.vim'
 " Appearance
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/playground'
 Plug 'hoob3rt/lualine.nvim'
 Plug 'akinsho/nvim-bufferline.lua'
+Plug 'rktjmp/lush.nvim'
+Plug 'npxbr/gruvbox.nvim'
 
 " HTML/CSS/JS
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'prettier/vim-prettier'
 
 " Git
-Plug 'mhinz/vim-signify'
+" Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
-
-" Plain text
-Plug 'vimwiki/vimwiki'
+Plug 'lewis6991/gitsigns.nvim'
 
 " Testing
 Plug 'vim-test/vim-test'
 Plug 'ankush/frappe_test.vim'
+
+
+Plug 'vimwiki/vimwiki'
 
 call plug#end()
 
@@ -155,6 +160,10 @@ autocmd BufReadPost *
 
 let g:mapleader = "\<Space>"
 let g:maplocalleader = "\<Space>"
+
+nnoremap <leader>/ :Commentary<CR>
+vnoremap <leader>/ :Commentary<CR>
+
 
 let test#strategy = "vtr"
 

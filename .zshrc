@@ -29,8 +29,6 @@ SAVEHIST=1048576
 # the one true text editor
 alias v="nvim"
 alias nv="poetry run nvim"
-alias vi="nvim"
-alias vim="nvim"
 alias la="ls -lah"
 export EDITOR="nvim"
 export VISUAL="nvim"
