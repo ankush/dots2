@@ -6,13 +6,13 @@ call plug#begin($HOME . '/.local/share/nvim/plugged')
 " Intelligence
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
-Plug 'hrsh7th/nvim-compe'
 
 " General
 Plug 'editorconfig/editorconfig-vim'
 Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
+Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 
 " Navigation and search
@@ -25,18 +25,14 @@ Plug 'junegunn/fzf.vim'
 " Appearance
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'nvim-treesitter/playground'
 Plug 'hoob3rt/lualine.nvim'
 Plug 'akinsho/nvim-bufferline.lua'
-Plug 'rktjmp/lush.nvim'
-Plug 'npxbr/gruvbox.nvim'
 
 " HTML/CSS/JS
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'prettier/vim-prettier'
 
 " Git
-" Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'lewis6991/gitsigns.nvim'
@@ -44,7 +40,6 @@ Plug 'lewis6991/gitsigns.nvim'
 " Testing
 Plug 'vim-test/vim-test'
 Plug 'ankush/frappe_test.vim'
-
 
 Plug 'vimwiki/vimwiki'
 
@@ -58,14 +53,6 @@ autocmd VimEnter *
 
 set termguicolors
 lua require'colorizer'.setup()
-
-" Signify settings
-let g:signify_sign_add               = '+'
-let g:signify_sign_delete            = '-'
-let g:signify_sign_delete_first_line = '‾'
-let g:signify_sign_change            = '~'
-let g:signify_sign_show_count = 0
-let g:signify_sign_show_text = 1
 
 " rooter settings
 let g:rooter_patterns = ['.git', 'Makefile', 'compile_commands.json', 'package.json', 'Cargo.toml']
@@ -84,7 +71,7 @@ let g:calendar_diary=$HOME.'wiki/diary' " Specify location for diary file
 
 " completion.nvim config
 let g:completion_sorting = "none"
-let g:completion_matching_strategy_list = ['exact', 'substring']
+let g:completion_matching_strategy_list = ['exact']
 let g:completion_matching_smart_case = 1
 let g:completion_trigger_keyword_length = 2
 let g:completion_timer_cycle = 150
@@ -246,6 +233,26 @@ inoremap <expr> <c-j> ("\<C-n>")
 inoremap <expr> <c-k> ("\<C-p>")
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+
+" improve default bindings
+nnoremap Y y$
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap J mzJ`z
+
+inoremap , ,<c-g>u
+inoremap . .<c-g>u
+inoremap ! !<c-g>u
+inoremap ? ?<c-g>u
+inoremap : :<c-g>u
+inoremap ) )<c-g>u
+inoremap ( (<c-g>u
+
+nnoremap <leader>k :m .-2<CR>==
+nnoremap <leader>j :m .+1<CR>==
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
 
 " Initialize lua stuff in lua init file
 luafile $HOME/.config/nvim/luainit.lua

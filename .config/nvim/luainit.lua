@@ -1,31 +1,5 @@
 local nvim_lsp = require'lspconfig'
 local nvim_completion = require'completion'
-local compe = require'compe'
-
-compe.setup {
-  enabled = true;
-  autocomplete = true;
-  debug = false;
-  min_length = 1;
-  preselect = 'disable';
-  throttle_time = 80;
-  source_timeout = 200;
-  incomplete_delay = 400;
-  max_abbr_width = 100;
-  max_kind_width = 100;
-  max_menu_width = 100;
-  documentation = true;
-
-  source = {
-    path = true;
-    buffer = true;
-    nvim_lsp = true;
-    nvim_lua = false;
-    spell = false;
-    treesitter = false;
-  };
-}
-
 
 local on_attach = function(client, bufnr)
   nvim_completion.on_attach(client, bufnr)
@@ -57,6 +31,19 @@ local on_attach = function(client, bufnr)
     buf_set_keymap("n", "<space>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
   elseif client.resolved_capabilities.document_range_formatting then
     buf_set_keymap("n", "<space>lf", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
+  end
+  -- Set autocommands conditional on server_capabilities
+  if client.resolved_capabilities.document_highlight then
+    vim.api.nvim_exec([[
+      hi LspReferenceRead cterm=bold ctermbg=red guibg=#44475a
+      hi LspReferenceText cterm=bold ctermbg=red guibg=#44475a
+      hi LspReferenceWrite cterm=bold ctermbg=red guibg=#44475a
+      augroup lsp_document_highlight
+        autocmd! * <buffer>
+        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+      augroup END
+    ]], false)
   end
 end
 
