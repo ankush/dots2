@@ -63,6 +63,7 @@ confidence=
 # no Warning level messages displayed, use "--disable=all --enable=classes
 disable=C,   # disbble all convention checks
         R,   # disable all refactoring checks
+        W,   # disable all warnings
         no-member,  # not possible to use with Frappe
         attribute-defined-outside-init,  #not possible with Frappe
         unused-argument,
@@ -72,7 +73,8 @@ disable=C,   # disbble all convention checks
         access-member-before-definition, # more false positives with FF
         unused-import,   # import frappe
         unused-wildcard-import,  # from utils import *
-        unused-variable
+        unused-variable,
+        assigning-non-slot
 
 # Enable the message, report, category or checker with the given id(s). You can
 # either give multiple identifier separated by comma (,) or put this option
@@ -100,7 +102,7 @@ evaluation=10.0 - ((float(5 * error + warning + refactor + convention) / stateme
 output-format=colorized
 
 # Tells whether to display a full report or only the messages.
-reports=yes
+reports=no
 
 # Activate the evaluation score.
 score=no

@@ -31,6 +31,7 @@ Plug 'akinsho/nvim-bufferline.lua'
 " HTML/CSS/JS
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'prettier/vim-prettier'
+Plug 'mattn/emmet-vim'
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -42,6 +43,7 @@ Plug 'vim-test/vim-test'
 Plug 'ankush/frappe_test.vim'
 
 Plug 'vimwiki/vimwiki'
+Plug 'tools-life/taskwiki'
 
 call plug#end()
 
