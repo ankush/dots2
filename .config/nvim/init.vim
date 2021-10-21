@@ -5,7 +5,9 @@ call plug#begin($HOME . '/.local/share/nvim/plugged')
 
 " Intelligence
 Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/completion-nvim'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/nvim-cmp'
 
 " General
 Plug 'editorconfig/editorconfig-vim'
@@ -70,13 +72,6 @@ let g:vimwiki_use_calender=1
 let g:calendar_options = 'nornu'        " Draw calendar with proper width in split view
 let g:calendar_monday=1                 " Start week on monday
 let g:calendar_diary=$HOME.'wiki/diary' " Specify location for diary file
-
-" completion.nvim config
-let g:completion_sorting = "none"
-let g:completion_matching_strategy_list = ['exact']
-let g:completion_matching_smart_case = 1
-let g:completion_trigger_keyword_length = 2
-let g:completion_timer_cycle = 150
 
 " fzf settings
 let g:fzf_preview_window = ['down:70%', 'ctrl-/']
@@ -229,12 +224,8 @@ nmap <C-p> ciw<C-r>0<ESC>
 set completeopt=menuone,noinsert,noselect
 
 " Completion navigation
-imap <tab> <Plug>(completion_smart_tab)
-imap <s-tab> <Plug>(completion_smart_s_tab)
 inoremap <expr> <c-j> ("\<C-n>")
 inoremap <expr> <c-k> ("\<C-p>")
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 
 " improve default bindings
