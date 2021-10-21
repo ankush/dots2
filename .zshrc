@@ -69,7 +69,7 @@ alias ls=exa
 
 
 # Dotfile  manager
-alias dot='/usr/local/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
+alias dot='git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -101,41 +101,21 @@ ZSH_DISABLE_COMPFIX=true
 # language specific configurations
 
 # javascript
-# Node version manager
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
+# Node
+export PATH="/opt/homebrew/opt/node@14/bin:$PATH"
 
 # ruby
 export GEM_HOME="$HOME/gems"
 export PATH="$HOME/gems/bin:$PATH"
 
 # python
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
-
-# golang
-export PATH="$HOME/go/bin:$PATH"
-
-# rust
-export PATH="$HOME/.cargo/bin:$PATH"
-
+eval "$(pyenv init -)"
 
 # rq issues
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 
-# todo.txt
-source /usr/local/Cellar/todo-txt/2.12.0/etc/bash_completion.d/todo_completion complete -F _todo t
-alias t="todo.sh"
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-alias luamake=/Users/ankush/proj/lua-language-server/3rd/luamake/luamake
-
-
 source ~/.localenvs
 
-export PATH="$HOME/.poetry/bin:$PATH"

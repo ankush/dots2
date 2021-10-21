@@ -1,8 +1,0 @@
-name: bench-develop
-root: ~/benches/develop
-
-pre_window: nvm use 14 && source env/bin/activate
-
-windows:
-  - editor: git -C apps/erpnext status && git -C apps/frappe status && open http://erp.localhost:8000/login
-  - bench: bench start

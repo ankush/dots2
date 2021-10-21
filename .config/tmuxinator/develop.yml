@@ -1,0 +1,8 @@
+name: bench-develop
+root: ~/benches/develop
+
+pre_window: source env/bin/activate
+
+windows:
+  - editor: git -C apps/erpnext status && git -C apps/frappe status && open http://develop:8000/login
+  - bench: bench start

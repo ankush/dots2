@@ -45,6 +45,7 @@ Plug 'vim-test/vim-test'
 Plug 'ankush/frappe_test.vim'
 
 Plug 'vimwiki/vimwiki'
+Plug 'mattn/calendar-vim'
 Plug 'tools-life/taskwiki'
 
 call plug#end()
@@ -222,11 +223,6 @@ nmap <C-p> ciw<C-r>0<ESC>
 
 " Set completeopt to have a better completion experience
 set completeopt=menuone,noinsert,noselect
-
-" Completion navigation
-inoremap <expr> <c-j> ("\<C-n>")
-inoremap <expr> <c-k> ("\<C-p>")
-
 
 " improve default bindings
 nnoremap Y y$
