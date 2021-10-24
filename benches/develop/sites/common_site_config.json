@@ -15,6 +15,6 @@
  "webserver_port": 8000,
  "developer_mode": 1,
  "allow_tests": 1,
- "admin_password": "am",
  "disable_global_search": 1,
+ "admin_password": "am"
 }
