@@ -1,8 +1,8 @@
-name: bench-develop
+name: develop
 root: ~/benches/develop
 
-pre_window: source env/bin/activate
+pre_window: export VIRTUAL_ENV='/Users/ankush/benches/develop/env' && tmux setenv VIRTUAL_ENV $VIRTUAL_ENV
 
 windows:
-  - editor: git -C apps/erpnext status && git -C apps/frappe status && open http://develop:8000/login
+  - editor: clear && git -C apps/erpnext status && git -C apps/frappe status && open http://develop:8000/login
   - bench: bench start

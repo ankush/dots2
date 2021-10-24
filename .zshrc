@@ -119,3 +119,8 @@ export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 
 source ~/.localenvs
 
+
+# if virtual env exist then source it (set my TMUX startup script)
+if [ -n "$VIRTUAL_ENV" ]; then
+    source "$VIRTUAL_ENV/bin/activate";
+fi
