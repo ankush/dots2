@@ -115,7 +115,8 @@ export GEM_HOME="$HOME/gems"
 export PATH="$HOME/gems/bin:$PATH"
 
 # python
-eval "$(pyenv init -)"
+alias python="python3"
+alias pip="pip3"
 
 # rq issues
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES

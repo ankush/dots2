@@ -70,7 +70,8 @@ nvim_lsp.pyright.setup {
         autoSearchPaths = true,
         useLibraryCodeForTypes = true,
         typeCheckingMode = "off",
-      }
+        diagnosticMode = "openFilesOnly",
+    }
     }
   }
 }
