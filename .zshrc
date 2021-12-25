@@ -102,6 +102,11 @@ export GPG_TTY=`tty`
 # tmux aliases
 alias mux=tmuxinator
 
+# bench aliases
+
+alias browse="bench --site $CUR_SITE browse --user Administrator"
+
+
 ZSH_DISABLE_COMPFIX=true
 
 # language specific configurations

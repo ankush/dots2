@@ -16,6 +16,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
+Plug 'hrsh7th/vim-vsnip'
 
 " Navigation and search
 Plug 'airblade/vim-rooter'
@@ -46,7 +47,6 @@ Plug 'ankush/frappe_test.vim'
 
 Plug 'vimwiki/vimwiki'
 Plug 'mattn/calendar-vim'
-Plug 'tools-life/taskwiki'
 
 call plug#end()
 
@@ -77,6 +77,7 @@ let g:calendar_diary=$HOME.'wiki/diary' " Specify location for diary file
 " fzf settings
 let g:fzf_preview_window = ['down:70%', 'ctrl-/']
 let g:fzf_layout = { 'window': { 'width': 0.95, 'height': 0.95 } }
+let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
 
 
 " Copy diary template when starting a new file in diary directory
@@ -133,6 +134,7 @@ set foldlevel=99
 autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
 " Trim whitespace on save for all files
 autocmd BufWritePre * :%s/\s\+$//e
+set et
 
 " When editing a file, always jump to the last known cursor position.
 " Don't do it for commit messages, when the position is invalid, or when
@@ -142,6 +144,10 @@ autocmd BufReadPost *
     \   exe "normal g`\"" |
     \ endif
 
+augroup highlight_yank
+    autocmd!
+    au TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=400 }
+augroup END
 
 let g:mapleader = "\<Space>"
 let g:maplocalleader = "\<Space>"
@@ -154,7 +160,7 @@ let test#strategy = "vtr"
 
 let test#custom_runners = {'python': ['Frappe']}
 let test#enabled_runners = ["python#frappe"]
-let g:test#python#frappe#testsite = "tests"
+let g:test#python#frappe#testsite = $CUR_SITE
 
 " Disable useless binding
 nmap Q <Nop>
