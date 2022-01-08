@@ -1,6 +1,14 @@
 local nvim_lsp = require'lspconfig'
 local cmp = require'cmp'
 
+
+local lsp_sig_config = {
+  hint_enable = false,
+  handler_opts = {
+    border = "none",
+  }
+}
+
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
@@ -44,6 +52,8 @@ local on_attach = function(client, bufnr)
       augroup END
     ]], false)
   end
+
+  require "lsp_signature".on_attach(lsp_sig_config)
 end
 
 
@@ -65,8 +75,9 @@ cmp.setup({
       ['<CR>'] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true})
     },
     sources = {
-      { name = 'nvim_lsp' },
-      { name = 'buffer' },
+      { name = 'nvim_lsp', max_item_count = 3},
+      { name = 'buffer', max_item_count = 2},
+      { name = 'path', max_item_count = 1},
     }
 })
 
@@ -91,6 +102,11 @@ nvim_lsp.tsserver.setup {
 }
 
 nvim_lsp.vimls.setup {
+  capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+  on_attach = on_attach
+}
+
+nvim_lsp.rust_analyzer.setup{
   capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
   on_attach = on_attach
 }
@@ -127,7 +143,7 @@ require'lualine'.setup{
   sections = {
     lualine_a = { {'mode', upper = true} },
     lualine_b = { {'branch'} },
-    lualine_c = { {'filename', file_status = true}, {'diagnostics', sources={"nvim_lsp"}}},
+    lualine_c = { {'filename', file_status = true}, {'diagnostics', sources={"nvim_diagnostic"}}},
     lualine_x = { 'diff', 'fileformat', 'filetype' },
     lualine_y = { 'progress' },
     lualine_z = { 'location' },
@@ -137,7 +153,7 @@ require'lualine'.setup{
 
 require'bufferline'.setup{
   options={
-    diagnostics = "nvim_lsp",
+    diagnostics = "nvim_diagnostic",
     show_close_icon = false,
     always_show_bufferline = false,
   }
@@ -188,3 +204,5 @@ require('gitsigns').setup {
   use_decoration_api = true,
   use_internal_diff = true,  -- If luajit is present
 }
+
+require'nvim-tree'.setup()

@@ -7,7 +7,10 @@ call plug#begin($HOME . '/.local/share/nvim/plugged')
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/nvim-cmp'
+Plug 'ray-x/lsp_signature.nvim'
+
 
 " General
 Plug 'editorconfig/editorconfig-vim'
@@ -17,6 +20,8 @@ Plug 'tpope/vim-surround'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'hrsh7th/vim-vsnip'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'kyazdani42/nvim-tree.lua'
 
 " Navigation and search
 Plug 'airblade/vim-rooter'
@@ -45,8 +50,14 @@ Plug 'lewis6991/gitsigns.nvim'
 Plug 'vim-test/vim-test'
 Plug 'ankush/frappe_test.vim'
 
+" Notetaking
 Plug 'vimwiki/vimwiki'
 Plug 'mattn/calendar-vim'
+
+" Rust
+Plug 'rust-lang/rust.vim'
+Plug 'nvim-lua/lsp_extensions.nvim'
+
 
 call plug#end()
 
@@ -68,6 +79,10 @@ let g:vimwiki_list = [{'path': '~/wiki/',
 let g:vimwiki_ext2syntax = {'.md': 'markdown'}
 let g:vimwiki_listsym_rejected = '✗'
 let g:vimwiki_use_calender=1
+
+" Rust
+let g:rustfmt_autosave = 1
+autocmd CursorHold,CursorHoldI *.rs :lua require'lsp_extensions'.inlay_hints{}
 
 " Calendar config
 let g:calendar_options = 'nornu'        " Draw calendar with proper width in split view
@@ -146,7 +161,7 @@ autocmd BufReadPost *
 
 augroup highlight_yank
     autocmd!
-    au TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=400 }
+    au TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=200 }
 augroup END
 
 let g:mapleader = "\<Space>"
