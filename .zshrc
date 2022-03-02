@@ -85,12 +85,6 @@ function vrg()
     nvim -q <(rg --vimgrep "$@")
 }
 
-function semgrep()
-{
-    docker run --rm -v "${PWD}:/src" returntocorp/semgrep "$@"
-}
-
-
 function vsemgrep()
 {
     nvim -q <(semgrep "$@" --vim)
