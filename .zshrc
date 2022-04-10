@@ -66,6 +66,7 @@ alias cp="cp -i"
 
 # exa
 alias ls=exa
+alias tree="exa -T"
 
 
 # Dotfile  manager

@@ -1,5 +1,6 @@
 local nvim_lsp = require'lspconfig'
 local cmp = require'cmp'
+local telescope = require'telescope'
 
 
 local lsp_sig_config = {
@@ -207,4 +208,12 @@ require('gitsigns').setup {
   word_diff = false,
 }
 
--- require'nvim-tree'.setup()
+
+telescope.setup{
+    defaults = {
+        layout_strategy = 'vertical',
+        layout_config = { height = 0.95 , width = 0.95},
+    },
+}
+
+telescope.load_extension('fzf')

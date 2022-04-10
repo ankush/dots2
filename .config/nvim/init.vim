@@ -29,6 +29,8 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'christoomey/vim-tmux-runner'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
 " Appearance
 Plug 'dracula/vim', { 'as': 'dracula' }
@@ -81,7 +83,7 @@ let g:vimwiki_listsym_rejected = '✗'
 let g:vimwiki_use_calender=1
 
 " Rust
-let g:rustfmt_autosave = 1
+let g:rustfmt_autosave = 0
 autocmd CursorHold,CursorHoldI *.rs :lua require'lsp_extensions'.inlay_hints{}
 
 " Calendar config
@@ -190,12 +192,9 @@ nnoremap <leader>v <C-W>v
 nnoremap <leader>q :bdelete<CR>
 
 " Searching
-nnoremap \ :Rg<cr>
-nnoremap <leader>f :Files<cr>
-nnoremap <leader>sg :GFiles<cr>
-nnoremap <leader>sc :Commits<cr>
-nnoremap <leader>sm :GFiles?<cr>
-nnoremap <leader>m :History<CR>
+nnoremap \ <cmd>Telescope live_grep<cr>
+nnoremap <leader>f <cmd>Telescope find_files<cr>
+nnoremap <leader>m <cmd>Telescope oldfiles<cr>
 
 " Git
 nnoremap <leader>gc :Gcommit<CR>
