@@ -115,7 +115,7 @@ set history=1000
 set ignorecase " Ignore case while searching
 set inccommand=nosplit
 set incsearch " Search while still typing
-set laststatus=2  " Always show the status line at the bottom
+set laststatus=3  " global statusline
 set lazyredraw " Don't redraw when running macros
 set list
 set mouse+=a " Enable mouse support

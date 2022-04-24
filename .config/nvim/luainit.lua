@@ -140,6 +140,7 @@ require'lualine'.setup{
     theme = 'dracula',
     section_separators = "",
     component_separators = "",
+    globalstatus = true,
   },
   sections = {
     lualine_a = { {'mode', upper = true} },
