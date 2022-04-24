@@ -208,6 +208,10 @@ require('gitsigns').setup {
   word_diff = false,
 }
 
+require("indent_blankline").setup {
+    show_current_context = true,
+}
+
 
 telescope.setup{
     defaults = {
