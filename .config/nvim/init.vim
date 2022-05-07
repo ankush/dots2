@@ -58,8 +58,6 @@ Plug 'mattn/calendar-vim'
 
 " Rust
 Plug 'rust-lang/rust.vim'
-Plug 'nvim-lua/lsp_extensions.nvim'
-
 
 call plug#end()
 
@@ -84,7 +82,6 @@ let g:vimwiki_use_calender=1
 
 " Rust
 let g:rustfmt_autosave = 0
-autocmd CursorHold,CursorHoldI *.rs :lua require'lsp_extensions'.inlay_hints{}
 
 " Calendar config
 let g:calendar_options = 'nornu'        " Draw calendar with proper width in split view
@@ -222,7 +219,7 @@ nnoremap <leader>lp :cprev<CR>
 nnoremap <C-s> :w<CR>
 
 " black formatting
-nnoremap <leader>b :!black %<CR>
+nnoremap <leader>b :!black %<CR>:!isort %<CR>
 
 " Move in long wrapped lines
 nmap <Down> gj

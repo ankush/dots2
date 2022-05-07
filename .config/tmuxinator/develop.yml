@@ -9,7 +9,7 @@ windows:
   - editor: clear
               && git -C apps/erpnext status
               && git -C apps/frappe status
-              && sleep 5
+              && sleep 2
               && bench --site develop browse --user Administrator
               && nvim
   - bench: bench start
