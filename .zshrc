@@ -91,6 +91,11 @@ function vsemgrep()
     nvim -q <(semgrep "$@" --vim)
 }
 
+function vflake8()
+{
+    nvim -q <(flake8 "$@")
+}
+
 # gpg singing config
 export GPG_TTY=`tty`
 

@@ -18,16 +18,12 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
-Plug 'hrsh7th/vim-vsnip'
-Plug 'kyazdani42/nvim-web-devicons'
-Plug 'kyazdani42/nvim-tree.lua'
+Plug 'hrsh7th/vim-vsnip'  " only added because it's a dependency
 
 " Navigation and search
 Plug 'airblade/vim-rooter'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'christoomey/vim-tmux-runner'
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
@@ -36,12 +32,10 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'hoob3rt/lualine.nvim'
 Plug 'akinsho/nvim-bufferline.lua'
-Plug 'lukas-reineke/indent-blankline.nvim'
 
 " HTML/CSS/JS
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'prettier/vim-prettier'
-Plug 'mattn/emmet-vim'
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -55,9 +49,6 @@ Plug 'ankush/frappe_test.vim'
 " Notetaking
 Plug 'vimwiki/vimwiki'
 Plug 'mattn/calendar-vim'
-
-" Rust
-Plug 'rust-lang/rust.vim'
 
 call plug#end()
 
@@ -80,19 +71,10 @@ let g:vimwiki_ext2syntax = {'.md': 'markdown'}
 let g:vimwiki_listsym_rejected = '✗'
 let g:vimwiki_use_calender=1
 
-" Rust
-let g:rustfmt_autosave = 0
-
 " Calendar config
 let g:calendar_options = 'nornu'        " Draw calendar with proper width in split view
 let g:calendar_monday=1                 " Start week on monday
 let g:calendar_diary=$HOME.'wiki/diary' " Specify location for diary file
-
-" fzf settings
-let g:fzf_preview_window = ['down:70%', 'ctrl-/']
-let g:fzf_layout = { 'window': { 'width': 0.95, 'height': 0.95 } }
-let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
-
 
 " Copy diary template when starting a new file in diary directory
 autocmd BufNewFile */wiki/diary/[0-9]*.md :read ~/wiki/diary/templates/template.md
@@ -120,6 +102,7 @@ set nojoinspaces  " Use one space, not two, after punctuation
 set noswapfile  " Don't use a swapfile for the buffer
 set nowritebackup " required by Coc
 set wrap " disable text wrapping
+set noet
 set number " show absolute line number on current line
 set scrolloff=5 " Show at least 5 extra lines while scrolling
 set shiftwidth=4
@@ -141,6 +124,8 @@ set undodir=~/.config/nvim/undo-dir
 set undofile
 set colorcolumn=92
 set noexpandtab
+set shiftwidth=4
+set ts=4
 set signcolumn=number
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
@@ -175,6 +160,7 @@ let test#strategy = "vtr"
 let test#custom_runners = {'python': ['Frappe']}
 let test#enabled_runners = ["python#frappe"]
 let g:test#python#frappe#testsite = $CUR_SITE
+let g:test#python#frappe#arguments = "--skip-test-records --skip-before-tests"
 
 " Disable useless binding
 nmap Q <Nop>
@@ -192,14 +178,6 @@ nnoremap <leader>q :bdelete<CR>
 nnoremap \ <cmd>Telescope live_grep<cr>
 nnoremap <leader>f <cmd>Telescope find_files<cr>
 nnoremap <leader>m <cmd>Telescope oldfiles<cr>
-
-" Git
-nnoremap <leader>gc :Gcommit<CR>
-nnoremap <leader>gd :Gdiffsplit<CR>
-nnoremap <leader>gl :Glog<CR>
-nnoremap <leader>gs :G<CR>
-nnoremap <leader>gb :Git blame<CR>
-nnoremap <leader>gg :GBrowse<CR>
 
 " Make
 nnoremap <leader>mm :!make<CR>
